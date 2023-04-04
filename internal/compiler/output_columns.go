@@ -506,7 +506,7 @@ func outputColumnRefs(res *ast.ResTarget, tables []*Table, node *ast.ColumnRef) 
 			continue
 		}
 		for _, c := range t.Columns {
-			if c.Name == strings.ToLower(name) {
+			if strings.ToLower(c.Name) == strings.ToLower(name) {
 				found += 1
 				cname := c.Name
 				if res.Name != nil {

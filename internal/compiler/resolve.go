@@ -2,14 +2,12 @@ package compiler
 
 import (
 	"fmt"
-	"strconv"
-	"strings"
-
 	"github.com/kyleconroy/sqlc/internal/sql/ast"
 	"github.com/kyleconroy/sqlc/internal/sql/astutils"
 	"github.com/kyleconroy/sqlc/internal/sql/catalog"
 	"github.com/kyleconroy/sqlc/internal/sql/named"
 	"github.com/kyleconroy/sqlc/internal/sql/sqlerr"
+	"strconv"
 )
 
 func dataType(n *ast.TypeName) string {
@@ -184,7 +182,7 @@ func (comp *Compiler) resolveCatalogRefs(qc *QueryCatalog, rvs []*ast.RangeVar, 
 					if schema == "" {
 						schema = c.DefaultSchema
 					}
-					if c, ok := typeMap[schema][table.Name][strings.ToLower(key)]; ok {
+					if c, ok := typeMap[schema][table.Name][key]; ok {
 						found += 1
 						if ref.name != "" {
 							key = ref.name

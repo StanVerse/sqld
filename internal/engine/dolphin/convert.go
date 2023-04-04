@@ -42,9 +42,9 @@ func (c *cc) convertAlterTableStmt(n *pcast.AlterTableStmt) ast.Node {
 		switch spec.Tp {
 		case pcast.AlterTableAddColumns:
 			for _, def := range spec.NewColumns {
-				name := def.Name.String()
+				name := def.Name.Name.String()
 				columnDef := ast.ColumnDef{
-					Colname:   def.Name.String(),
+					Colname:   def.Name.Name.String(),
 					TypeName:  &ast.TypeName{Name: types.TypeToStr(def.Tp.GetType(), def.Tp.GetCharset())},
 					IsNotNull: isNotNull(def),
 				}
@@ -60,7 +60,7 @@ func (c *cc) convertAlterTableStmt(n *pcast.AlterTableStmt) ast.Node {
 			}
 
 		case pcast.AlterTableDropColumn:
-			name := spec.OldColumnName.String()
+			name := spec.OldColumnName.Name.O
 			alt.Cmds.Items = append(alt.Cmds.Items, &ast.AlterTableCmd{
 				Name:      &name,
 				Subtype:   ast.AT_DropColumn,
@@ -75,9 +75,9 @@ func (c *cc) convertAlterTableStmt(n *pcast.AlterTableStmt) ast.Node {
 			})
 
 			for _, def := range spec.NewColumns {
-				name := def.Name.String()
+				name := def.Name.Name.String()
 				columnDef := ast.ColumnDef{
-					Colname:   def.Name.String(),
+					Colname:   def.Name.Name.String(),
 					TypeName:  &ast.TypeName{Name: types.TypeToStr(def.Tp.GetType(), def.Tp.GetCharset())},
 					IsNotNull: isNotNull(def),
 				}
@@ -94,9 +94,9 @@ func (c *cc) convertAlterTableStmt(n *pcast.AlterTableStmt) ast.Node {
 
 		case pcast.AlterTableModifyColumn:
 			for _, def := range spec.NewColumns {
-				name := def.Name.String()
+				name := def.Name.Name.String()
 				columnDef := ast.ColumnDef{
-					Colname:   def.Name.String(),
+					Colname:   def.Name.Name.String(),
 					TypeName:  &ast.TypeName{Name: types.TypeToStr(def.Tp.GetType(), def.Tp.GetCharset())},
 					IsNotNull: isNotNull(def),
 				}
@@ -123,8 +123,8 @@ func (c *cc) convertAlterTableStmt(n *pcast.AlterTableStmt) ast.Node {
 
 		case pcast.AlterTableRenameColumn:
 			// TODO: Returning here may be incorrect if there are multiple specs
-			oldName := spec.OldColumnName.String()
-			newName := spec.NewColumnName.String()
+			oldName := spec.OldColumnName.Name.String()
+			newName := spec.NewColumnName.Name.String()
 			return &ast.RenameColumnStmt{
 				Table:   parseTableName(n.Table),
 				Col:     &ast.ColumnRef{Name: oldName},
@@ -265,7 +265,7 @@ func (c *cc) convertCreateTableStmt(n *pcast.CreateTableStmt) ast.Node {
 			}
 		}
 		columnDef := ast.ColumnDef{
-			Colname:   def.Name.String(),
+			Colname:   def.Name.Name.String(),
 			TypeName:  &ast.TypeName{Name: types.TypeToStr(def.Tp.GetType(), def.Tp.GetCharset())},
 			IsNotNull: isNotNull(def),
 			Comment:   comment,
@@ -305,7 +305,7 @@ func (c *cc) convertColumnNameExpr(n *pcast.ColumnNameExpr) *ast.ColumnRef {
 func (c *cc) convertColumnNames(cols []*pcast.ColumnName) *ast.List {
 	list := &ast.List{Items: []ast.Node{}}
 	for i := range cols {
-		name := identifier(cols[i].Name.String())
+		name := identifier(cols[i].Name.O)
 		list.Items = append(list.Items, &ast.ResTarget{
 			Name: &name,
 		})
@@ -527,7 +527,7 @@ func (c *cc) convertCommonTableExpression(n *pcast.CommonTableExpression) *ast.C
 		return nil
 	}
 
-	name := n.Name.String()
+	name := n.Name.O
 
 	columns := &ast.List{}
 	for _, col := range n.ColNameList {
@@ -1256,7 +1256,7 @@ func (c *cc) convertSplitRegionStmt(n *pcast.SplitRegionStmt) ast.Node {
 
 func (c *cc) convertTableName(n *pcast.TableName) *ast.RangeVar {
 	schema := identifier(n.Schema.String())
-	rel := identifier(n.Name.String())
+	rel := identifier(n.Name.O)
 	return &ast.RangeVar{
 		Schemaname: &schema,
 		Relname:    &rel,
