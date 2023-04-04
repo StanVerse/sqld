@@ -3,12 +3,12 @@ package cmd
 import (
 	"strings"
 
-	"github.com/kyleconroy/sqlc/internal/compiler"
-	"github.com/kyleconroy/sqlc/internal/config"
-	"github.com/kyleconroy/sqlc/internal/config/convert"
-	"github.com/kyleconroy/sqlc/internal/info"
-	"github.com/kyleconroy/sqlc/internal/plugin"
-	"github.com/kyleconroy/sqlc/internal/sql/catalog"
+	"github.com/StanVerse/sqld/internal/compiler"
+	"github.com/StanVerse/sqld/internal/config"
+	"github.com/StanVerse/sqld/internal/config/convert"
+	"github.com/StanVerse/sqld/internal/info"
+	"github.com/StanVerse/sqld/internal/plugin"
+	"github.com/StanVerse/sqld/internal/sql/catalog"
 )
 
 func pluginOverride(o config.Override) *plugin.Override {

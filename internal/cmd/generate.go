@@ -14,18 +14,18 @@ import (
 
 	"golang.org/x/sync/errgroup"
 
-	"github.com/kyleconroy/sqlc/internal/codegen/golang"
-	"github.com/kyleconroy/sqlc/internal/codegen/json"
-	"github.com/kyleconroy/sqlc/internal/compiler"
-	"github.com/kyleconroy/sqlc/internal/config"
-	"github.com/kyleconroy/sqlc/internal/config/convert"
-	"github.com/kyleconroy/sqlc/internal/debug"
-	"github.com/kyleconroy/sqlc/internal/ext"
-	"github.com/kyleconroy/sqlc/internal/ext/process"
-	"github.com/kyleconroy/sqlc/internal/ext/wasm"
-	"github.com/kyleconroy/sqlc/internal/multierr"
-	"github.com/kyleconroy/sqlc/internal/opts"
-	"github.com/kyleconroy/sqlc/internal/plugin"
+	"github.com/StanVerse/sqld/internal/codegen/golang"
+	"github.com/StanVerse/sqld/internal/codegen/json"
+	"github.com/StanVerse/sqld/internal/compiler"
+	"github.com/StanVerse/sqld/internal/config"
+	"github.com/StanVerse/sqld/internal/config/convert"
+	"github.com/StanVerse/sqld/internal/debug"
+	"github.com/StanVerse/sqld/internal/ext"
+	"github.com/StanVerse/sqld/internal/ext/process"
+	"github.com/StanVerse/sqld/internal/ext/wasm"
+	"github.com/StanVerse/sqld/internal/multierr"
+	"github.com/StanVerse/sqld/internal/opts"
+	"github.com/StanVerse/sqld/internal/plugin"
 )
 
 const errMessageNoVersion = `The configuration file must have a version number.
