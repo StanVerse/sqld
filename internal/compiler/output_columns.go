@@ -3,6 +3,7 @@ package compiler
 import (
 	"errors"
 	"fmt"
+	"strings"
 
 	"github.com/kyleconroy/sqlc/internal/sql/catalog"
 
@@ -505,7 +506,7 @@ func outputColumnRefs(res *ast.ResTarget, tables []*Table, node *ast.ColumnRef) 
 			continue
 		}
 		for _, c := range t.Columns {
-			if c.Name == name {
+			if c.Name == strings.ToLower(name) {
 				found += 1
 				cname := c.Name
 				if res.Name != nil {

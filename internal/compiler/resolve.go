@@ -3,6 +3,7 @@ package compiler
 import (
 	"fmt"
 	"strconv"
+	"strings"
 
 	"github.com/kyleconroy/sqlc/internal/sql/ast"
 	"github.com/kyleconroy/sqlc/internal/sql/astutils"
@@ -183,7 +184,7 @@ func (comp *Compiler) resolveCatalogRefs(qc *QueryCatalog, rvs []*ast.RangeVar, 
 					if schema == "" {
 						schema = c.DefaultSchema
 					}
-					if c, ok := typeMap[schema][table.Name][key]; ok {
+					if c, ok := typeMap[schema][table.Name][strings.ToLower(key)]; ok {
 						found += 1
 						if ref.name != "" {
 							key = ref.name
