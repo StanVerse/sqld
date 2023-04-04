@@ -6,8 +6,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/kyleconroy/sqlc/internal/config"
-	"github.com/kyleconroy/sqlc/internal/sql/sqlpath"
+	"github.com/StanVerse/sqld/internal/config"
+	"github.com/StanVerse/sqld/internal/sql/sqlpath"
 )
 
 func writeInputs(w *multipart.Writer, file string, conf *config.Config) error {

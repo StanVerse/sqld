@@ -48,8 +48,8 @@ const catalogTmpl = `
 package {{.Pkg}}
 
 import (
-	"github.com/kyleconroy/sqlc/internal/sql/ast"
-	"github.com/kyleconroy/sqlc/internal/sql/catalog"
+	"github.com/StanVerse/sqld/internal/sql/ast"
+	"github.com/StanVerse/sqld/internal/sql/catalog"
 )
 
 var funcs{{.GenFnName}} = []*catalog.Function {
@@ -119,8 +119,8 @@ const loaderFuncTmpl = `
 package postgresql
 
 import (
-	"github.com/kyleconroy/sqlc/internal/engine/postgresql/contrib"
-	"github.com/kyleconroy/sqlc/internal/sql/catalog"
+	"github.com/StanVerse/sqld/internal/engine/postgresql/contrib"
+	"github.com/StanVerse/sqld/internal/sql/catalog"
 )
 
 func loadExtension(name string) *catalog.Schema {

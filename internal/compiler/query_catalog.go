@@ -3,8 +3,8 @@ package compiler
 import (
 	"fmt"
 
-	"github.com/kyleconroy/sqlc/internal/sql/ast"
-	"github.com/kyleconroy/sqlc/internal/sql/catalog"
+	"github.com/StanVerse/sqld/internal/sql/ast"
+	"github.com/StanVerse/sqld/internal/sql/catalog"
 )
 
 type QueryCatalog struct {

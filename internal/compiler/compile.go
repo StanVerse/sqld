@@ -9,13 +9,13 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/kyleconroy/sqlc/internal/metadata"
-	"github.com/kyleconroy/sqlc/internal/migrations"
-	"github.com/kyleconroy/sqlc/internal/multierr"
-	"github.com/kyleconroy/sqlc/internal/opts"
-	"github.com/kyleconroy/sqlc/internal/sql/ast"
-	"github.com/kyleconroy/sqlc/internal/sql/sqlerr"
-	"github.com/kyleconroy/sqlc/internal/sql/sqlpath"
+	"github.com/StanVerse/sqld/internal/metadata"
+	"github.com/StanVerse/sqld/internal/migrations"
+	"github.com/StanVerse/sqld/internal/multierr"
+	"github.com/StanVerse/sqld/internal/opts"
+	"github.com/StanVerse/sqld/internal/sql/ast"
+	"github.com/StanVerse/sqld/internal/sql/sqlerr"
+	"github.com/StanVerse/sqld/internal/sql/sqlpath"
 )
 
 // TODO: Rename this interface Engine

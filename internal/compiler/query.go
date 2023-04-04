@@ -1,7 +1,7 @@
 package compiler
 
 import (
-	"github.com/kyleconroy/sqlc/internal/sql/ast"
+	"github.com/StanVerse/sqld/internal/sql/ast"
 )
 
 type Function struct {

@@ -1,8 +1,8 @@
 package sdk
 
 import (
-	"github.com/kyleconroy/sqlc/internal/pattern"
-	"github.com/kyleconroy/sqlc/internal/plugin"
+	"github.com/StanVerse/sqld/internal/pattern"
+	"github.com/StanVerse/sqld/internal/plugin"
 )
 
 func DataType(n *plugin.Identifier) string {

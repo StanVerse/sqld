@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/kyleconroy/sqlc/internal/sql/ast"
-	"github.com/kyleconroy/sqlc/internal/sql/sqlerr"
+	"github.com/StanVerse/sqld/internal/sql/ast"
+	"github.com/StanVerse/sqld/internal/sql/sqlerr"
 )
 
 func (c *Catalog) schemasToSearch(ns string) []string {

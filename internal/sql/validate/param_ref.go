@@ -4,9 +4,9 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/kyleconroy/sqlc/internal/sql/ast"
-	"github.com/kyleconroy/sqlc/internal/sql/astutils"
-	"github.com/kyleconroy/sqlc/internal/sql/sqlerr"
+	"github.com/StanVerse/sqld/internal/sql/ast"
+	"github.com/StanVerse/sqld/internal/sql/astutils"
+	"github.com/StanVerse/sqld/internal/sql/sqlerr"
 )
 
 func ParamRef(n ast.Node) (map[int]bool, bool, error) {
